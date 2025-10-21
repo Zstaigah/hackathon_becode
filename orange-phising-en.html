@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protect Yourself from Phishing - Orange</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            color: #000;
+            background: #f5f5f5;
+        }
+
+        .header {
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .top-nav {
+            padding: 10px 20px;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .top-nav-left a, .top-nav-right a {
+            margin: 0 10px;
+            color: #000;
+            text-decoration: none;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            justify-content: space-between;
+        }
+
+        .logo {
+            width: 30px;
+            height: 30px;
+            background: #ff7900;
+            display: inline-block;
+        }
+
+        .menu-btn {
+            margin-left: 15px;
+            background: none;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .search-box {
+            flex: 1;
+            max-width: 400px;
+            margin: 0 20px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 8px 35px 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            color: white;
+            padding: 60px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero-label {
+            color: #ff7900;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .hero-icon {
+            font-size: 200px;
+            opacity: 0.1;
+            position: absolute;
+            right: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-label {
+            color: #ff7900;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff7900;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+
+        .warning-box h3 {
+            color: #ff7900;
+            margin-bottom: 10px;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .tip-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tip-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .tip-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        .tip-card p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .examples-section {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            margin: 40px 0;
+        }
+
+        .example-item {
+            margin: 30px 0;
+            padding: 20px;
+            border-left: 3px solid #ff7900;
+            background: #f9f9f9;
+        }
+
+        .example-item h4 {
+            color: #ff7900;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .red-flag {
+            color: #d32f2f;
+            font-weight: 600;
+        }
+
+        .green-check {
+            color: #2e7d32;
+            font-weight: 600;
+        }
+
+        .action-section {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            margin: 40px 0;
+        }
+
+        .action-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .action-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 16px;
+        }
+
+        .action-list li:before {
+            content: "→";
+            color: #ff7900;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #ff7900 0%, #e56d00 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .cta-box h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .cta-box p {
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: white;
+            color: #ff7900;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        .footer {
+            background: white;
+            padding: 60px 20px 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #000;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            font-size: 12px;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="top-nav">
+            <div class="top-nav-left">
+                <a href="#">Individuals</a>
+                <a href="#">Self-employed</a>
+                <a href="#">Business</a>
+                <a href="#">Orange Society</a>
+            </div>
+            <div class="top-nav-right">
+                <a href="#">Top Up</a>
+                <a href="#">Shops</a>
+                <a href="#">Forum Tribe</a>
+                <a href="#">FR</a>
+                <a href="#">NL</a>
+            </div>
+        </div>
+        <div class="main-nav">
+            <div style="display: flex; align-items: center;">
+                <span class="logo"></span>
+                <button class="menu-btn">☰ Menu</button>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Search...">
+                <button>🔍</button>
+            </div>
+            <div>
+                <span>🛒 Client area</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-label">Security & Protection</div>
+            <h1>Don't Fall for Phishing Scams</h1>
+            <p>Learn how to recognize and protect yourself from phishing attempts. Stay safe online with our expert tips and guidance.</p>
+        </div>
+        <div class="hero-icon">🛡️</div>
+    </section>
+
+    <div class="container">
+        <section>
+            <div class="section-label">What is Phishing?</div>
+            <h2 class="section-title">Understanding the Threat</h2>
+            <p class="intro-text">
+                Phishing is a cyber attack where criminals impersonate legitimate organizations to steal your personal information, passwords, or financial data. These attacks often come through emails, text messages, or fake websites that look convincingly real.
+            </p>
+
+            <div class="warning-box">
+                <h3>⚠️ Important Warning</h3>
+                <p>Orange will NEVER ask you to provide sensitive information like passwords, credit card numbers, or personal identification through email, SMS, or unsolicited phone calls. If you receive such a request, it's likely a phishing attempt.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-label">Protection Tips</div>
+            <h2 class="section-title">How to Spot Phishing Attempts</h2>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">📧</div>
+                    <h3>Check the Sender</h3>
+                    <p>Always verify the sender's email address carefully. Phishers often use addresses that look similar to legitimate ones but contain small variations or misspellings.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🔗</div>
+                    <h3>Hover Over Links</h3>
+                    <p>Before clicking any link, hover your mouse over it to see the actual URL. If it doesn't match the legitimate website or looks suspicious, don't click it.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">⚡</div>
+                    <h3>Beware of Urgency</h3>
+                    <p>Phishing emails often create a false sense of urgency, claiming your account will be closed or you'll miss an opportunity. Take time to verify before acting.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🔒</div>
+                    <h3>Check for HTTPS</h3>
+                    <p>Legitimate websites use HTTPS (look for the padlock icon in your browser). However, phishers can also use HTTPS, so this shouldn't be your only check.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">✉️</div>
+                    <h3>Poor Grammar & Spelling</h3>
+                    <p>Many phishing attempts contain spelling mistakes, grammatical errors, or awkward phrasing that professional companies wouldn't use.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">📎</div>
+                    <h3>Suspicious Attachments</h3>
+                    <p>Never open attachments from unknown senders. Even if the sender seems familiar, verify through another channel before opening unexpected files.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="examples-section">
+            <div class="section-label">Real Examples</div>
+            <h2 class="section-title">Common Phishing Scenarios</h2>
+
+            <div class="example-item">
+                <h4>Fake Account Verification</h4>
+                <p><span class="red-flag">🚩 Red Flag:</span> "Your Orange account has been suspended. Click here to verify your identity within 24 hours or lose access permanently."</p>
+                <p><span class="green-check">✓ Reality:</span> Orange will never suspend your account without prior communication through official channels and will never ask you to verify through a link in an email.</p>
+            </div>
+
+            <div class="example-item">
+                <h4>Prize or Refund Notification</h4>
+                <p><span class="red-flag">🚩 Red Flag:</span> "Congratulations! You've won a free smartphone. Provide your credit card details to cover shipping costs."</p>
+                <p><span class="green-check">✓ Reality:</span> Legitimate contests don't require credit card information to claim prizes. Orange contests are announced through official channels.</p>
+            </div>
+
+            <div class="example-item">
+                <h4>Fake Invoice or Bill</h4>
+                <p><span class="red-flag">🚩 Red Flag:</span> An email with an attached invoice from "Orange Billing" asking you to download and review charges immediately.</p>
+                <p><span class="green-check">✓ Reality:</span> Check your official Orange account directly through the website or app. Don't download attachments from emails you weren't expecting.</p>
+            </div>
+
+            <div class="example-item">
+                <h4>Technical Support Scam</h4>
+                <p><span class="red-flag">🚩 Red Flag:</span> "Your router has a security issue. Click here to install a mandatory security update or call this number immediately."</p>
+                <p><span class="green-check">✓ Reality:</span> Orange will communicate security updates through official channels and never ask you to install software from email links.</p>
+            </div>
+        </section>
+
+        <section class="action-section">
+            <div class="section-label">Take Action</div>
+            <h2 class="section-title">What to Do If You Suspect Phishing</h2>
+            
+            <ul class="action-list">
+                <li>Don't click on any links or download attachments from suspicious emails</li>
+                <li>Don't reply to the email or provide any personal information</li>
+                <li>Check your Orange account directly by typing the URL into your browser</li>
+                <li>Forward the suspicious email to Orange's security team</li>
+                <li>Delete the phishing email from your inbox and spam folder</li>
+                <li>If you've clicked a link or provided information, change your passwords immediately</li>
+                <li>Enable two-factor authentication on your Orange account for extra security</li>
+                <li>Monitor your account activity regularly for any unauthorized changes</li>
+                <li>Report the phishing attempt to local authorities if financial fraud occurred</li>
+            </ul>
+        </section>
+
+        <div class="cta-box">
+            <h3>Need Help or Have Questions?</h3>
+            <p>Our security team is here to assist you. If you're unsure about the legitimacy of a communication, contact us through official channels.</p>
+            <a href="#" class="cta-button">Contact Security Support</a>
+        </div>
+
+        <section>
+            <div class="section-label">Additional Resources</div>
+            <h2 class="section-title">Stay Informed and Protected</h2>
+            <p class="intro-text">
+                Cybercriminals constantly evolve their tactics, so staying informed is your best defense. Orange is committed to protecting your data and privacy. We regularly update our security measures and encourage all customers to practice safe online habits.
+            </p>
+            <p class="intro-text">
+                Remember: When in doubt, always contact Orange directly through official channels listed on our website rather than responding to suspicious communications.
+            </p>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Our offers</h3>
+                <ul>
+                    <li><a href="#">Mobile + Internet + TV</a></li>
+                    <li><a href="#">Mobile</a></li>
+                    <li><a href="#">Internet</a></li>
+                    <li><a href="#">TV</a></li>
+                    <li><a href="#">Smartphones and GSM</a></li>
+                    <li><a href="#">Ultra Gaming</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">hey! telecom</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Our services</h3>
+                <ul>
+                    <li><a href="#">Orange Money</a></li>
+                    <li><a href="#">Orange Applications</a></li>
+                    <li><a href="#">Orange Thank You</a></li>
+                    <li><a href="#">Smartphone trade-in</a></li>
+                    <li><a href="#">Social tariff</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Orange Society</h3>
+                <ul>
+                    <li><a href="#">About Orange</a></li>
+                    <li><a href="#">Corporate responsibility</a></li>
+                    <li><a href="#">Financial information</a></li>
+                    <li><a href="#">Press releases</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Help and support</h3>
+                <ul>
+                    <li><a href="#">Consult FAQs</a></li>
+                    <li><a href="#">Configure my smartphone</a></li>
+                    <li><a href="#">Configure my internet</a></li>
+                    <li><a href="#">Configure my Voicemail</a></li>
+                    <li><a href="#">Identify my prepaid card</a></li>
+                    <li><a href="#">Check my mobile for 5G/4G</a></li>
+                    <li><a href="#">Incidents and outages</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Security & Privacy</h3>
+                <ul>
+                    <li><a href="#">Report Phishing</a></li>
+                    <li><a href="#">Security Tips</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Data Protection</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">Contact information</a></li>
+                    <li><a href="#">Call 5000</a></li>
+                    <li><a href="#">Our Orange shops</a></li>
+                    <li><a href="#">Security Hotline</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© Orange 2025 | Your security is our priority</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protect Yourself from Phishing - Orange</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            color: #000;
+            background: #fff;
+            line-height: 1.5;
+        }
+
+        .top-bar {
+            background: #f6f6f6;
+            padding: 8px 20px;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+        .top-bar-left a, .top-bar-right a {
+            margin: 0 12px;
+            color: #000;
+            text-decoration: none;
+            font-weight: 400;
+        }
+
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .lang-active {
+            font-weight: 700;
+        }
+
+        .header {
+            background: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+        .logo-menu {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: #ff7900;
+            border-radius: 0;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+
+        .menu-icon {
+            width: 20px;
+            height: 2px;
+            background: #000;
+            position: relative;
+            display: block;
+        }
+
+        .menu-icon::before,
+        .menu-icon::after {
+            content: '';
+            width: 20px;
+            height: 2px;
+            background: #000;
+            position: absolute;
+            left: 0;
+        }
+
+        .menu-icon::before { top: -6px; }
+        .menu-icon::after { top: 6px; }
+
+        .search-box {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 40px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 40px 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .client-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            color: white;
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: #ff7900;
+            transform: rotate(45deg);
+            opacity: 0.15;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-label {
+            color: #ff7900;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 700px;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            color: #ff7900;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .intro-text {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff7900;
+            padding: 25px 30px;
+            margin: 30px 0;
+            border-radius: 0;
+        }
+
+        .warning-box h3 {
+            color: #ff7900;
+            margin-bottom: 12px;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .warning-box p {
+            color: #5d4037;
+            line-height: 1.7;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .tip-card {
+            background: #f6f6f6;
+            padding: 30px;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+
+        .tip-card:hover {
+            background: #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .tip-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .tip-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #000;
+            font-weight: 700;
+        }
+
+        .tip-card p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .examples-section {
+            background: #f6f6f6;
+            padding: 50px 40px;
+            margin: 60px -40px;
+        }
+
+        .examples-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .example-item {
+            background: white;
+            margin: 20px 0;
+            padding: 25px;
+            border-left: 4px solid #ff7900;
+        }
+
+        .example-item h4 {
+            color: #000;
+            margin-bottom: 12px;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .example-item p {
+            margin-bottom: 10px;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .red-flag {
+            color: #d32f2f;
+            font-weight: 700;
+        }
+
+        .green-check {
+            color: #2e7d32;
+            font-weight: 700;
+        }
+
+        .action-section {
+            background: #000;
+            color: white;
+            padding: 50px 40px;
+            margin: 60px -40px;
+        }
+
+        .action-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .action-section .section-label {
+            color: #ff7900;
+        }
+
+        .action-section .section-title {
+            color: white;
+        }
+
+        .action-list {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .action-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+            font-size: 16px;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .action-list li:before {
+            content: "→";
+            color: #ff7900;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 20px;
+        }
+
+        .promo-banner {
+            background: #ff7900;
+            color: white;
+            padding: 50px 40px;
+            margin: 60px -40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: rgba(0,0,0,0.1);
+            transform: rotate(25deg);
+        }
+
+        .promo-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-badge {
+            display: inline-block;
+            background: #000;
+            color: #ff7900;
+            padding: 8px 20px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+        }
+
+        .promo-banner h3 {
+            font-size: 40px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .promo-highlight {
+            font-size: 20px;
+            margin-bottom: 35px;
+        }
+
+        .promo-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 35px auto;
+            max-width: 700px;
+            text-align: left;
+        }
+
+        .feature {
+            background: rgba(0,0,0,0.2);
+            padding: 15px 20px;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .promo-price {
+            margin: 35px 0 25px;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            opacity: 0.7;
+            margin-right: 15px;
+            font-size: 24px;
+        }
+
+        .new-price {
+            font-size: 52px;
+            font-weight: 700;
+        }
+
+        .promo-urgency {
+            font-size: 16px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .promo-button {
+            display: inline-block;
+            padding: 18px 50px;
+            background: #000;
+            color: #ff7900;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .promo-button:hover {
+            background: #1a1a1a;
+        }
+
+        .promo-terms {
+            margin-top: 20px;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .cta-box {
+            background: #f6f6f6;
+            padding: 50px 40px;
+            text-align: center;
+            margin: 60px -40px;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-box h3 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .cta-box p {
+            font-size: 16px;
+            margin-bottom: 25px;
+            color: #555;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #ff7900;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #e56d00;
+        }
+
+        .footer {
+            background: #f6f6f6;
+            padding: 60px 40px 30px;
+            border-top: 1px solid #e6e6e6;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+            color: #000;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: #ff7900;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 50px auto 0;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+            font-size: 13px;
+            color: #666;
+            text-align: center;
+        }
+
+        @media (max-width: 968px) {
+            .tips-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .promo-features {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .search-box {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <a href="#">Particulars</a>
+            <a href="#">Independents</a>
+            <a href="#">Enterprises</a>
+            <a href="#">Orange Society</a>
+        </div>
+        <div class="top-bar-right">
+            <a href="#">Recharge</a>
+            <a href="#">Shops</a>
+            <a href="#">Forum Tribe</a>
+            <a href="#">FR</a>
+            <a href="#" class="lang-active">NL</a>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="logo-menu">
+            <span class="logo"></span>
+            <button class="menu-btn">
+                <span class="menu-icon"></span>
+                Menu
+            </button>
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Search...">
+            <button>🔍</button>
+        </div>
+        <div class="client-area">
+            <span>🌐</span>
+            <span>👤</span>
+            <span>Client area</span>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-label">Security & Protection</div>
+            <h1>Don't Fall for Phishing Scams</h1>
+            <p>Learn how to recognize and protect yourself from phishing attempts. Stay safe online with our expert tips and guidance.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="section">
+            <div class="section-label">What is Phishing?</div>
+            <h2 class="section-title">Understanding the Threat</h2>
+            <p class="intro-text">
+                Phishing is a cyber attack where criminals impersonate legitimate organizations to steal your personal information, passwords, or financial data. These attacks often come through emails, text messages, or fake websites that look convincingly real.
+            </p>
+
+            <div class="warning-box">
+                <h3>⚠️ Important Warning</h3>
+                <p>Orange will NEVER ask you to provide sensitive information like passwords, credit card numbers, or personal identification through email, SMS, or unsolicited phone calls. If you receive such a request, it's likely a phishing attempt.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-label">Protection Tips</div>
+            <h2 class="section-title">How to Spot Phishing Attempts</h2>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">📧</div>
+                    <h3>Check the Sender</h3>
+                    <p>Always verify the sender's email address carefully. Phishers often use addresses that look similar to legitimate ones but contain small variations or misspellings.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🔗</div>
+                    <h3>Hover Over Links</h3>
+                    <p>Before clicking any link, hover your mouse over it to see the actual URL. If it doesn't match the legitimate website or looks suspicious, don't click it.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">⚡</div>
+                    <h3>Beware of Urgency</h3>
+                    <p>Phishing emails often create a false sense of urgency, claiming your account will be closed or you'll miss an opportunity. Take time to verify before acting.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🔒</div>
+                    <h3>Check for HTTPS</h3>
+                    <p>Legitimate websites use HTTPS (look for the padlock icon in your browser). However, phishers can also use HTTPS, so this shouldn't be your only check.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">✉️</div>
+                    <h3>Poor Grammar & Spelling</h3>
+                    <p>Many phishing attempts contain spelling mistakes, grammatical errors, or awkward phrasing that professional companies wouldn't use.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🔎</div>
+                    <h3>Suspicious Attachments</h3>
+                    <p>Never open attachments from unknown senders. Even if the sender seems familiar, verify through another channel before opening unexpected files.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section class="examples-section">
+        <div class="examples-content">
+            <div class="section-label">Real Examples</div>
+            <h2 class="section-title">Common Phishing Scenarios</h2>
+
+            <div class="example-item">
+                <h4>Fake Account Verification</h4>
+                <p><span class="red-flag">🚩 Red Flag:</span> "Your Orange account has been suspended. Click here to verify your identity within 24 hours or lose access permanently."</p>
+                <p><span class="green-check">✓ Reality:</span> Orange will never suspend your account without prior communication through official channels and will never ask you to verify through a link in an email.</p>
+            </div>
+
+            <div class="example-item">
+                <h4>Prize or Refund Notification</h4>
+                <p><span class="red-flag">🚩 Red Flag:</span> "Congratulations! You've won a free smartphone. Provide your credit card details to cover shipping costs."</p>
+                <p><span class="green-check">✓ Reality:</span> Legitimate contests don't require credit card information to claim prizes. Orange contests are announced through official channels.</p>
+            </div>
+
+            <div class="example-item">
+                <h4>Fake Invoice or Bill</h4>
+                <p><span class="red-flag">🚩 Red Flag:</span> An email with an attached invoice from "Orange Billing" asking you to download and review charges immediately.</p>
+                <p><span class="green-check">✓ Reality:</span> Check your official Orange account directly through the website or app. Don't download attachments from emails you weren't expecting.</p>
+            </div>
+
+            <div class="example-item">
+                <h4>Technical Support Scam</h4>
+                <p><span class="red-flag">🚩 Red Flag:</span> "Your router has a security issue. Click here to install a mandatory security update or call this number immediately."</p>
+                <p><span class="green-check">✓ Reality:</span> Orange will communicate security updates through official channels and never ask you to install software from email links.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="action-section">
+        <div class="action-content">
+            <div class="section-label">Take Action</div>
+            <h2 class="section-title">What to Do If You Suspect Phishing</h2>
+            
+            <ul class="action-list">
+                <li>Don't click on any links or download attachments from suspicious emails</li>
+                <li>Don't reply to the email or provide any personal information</li>
+                <li>Check your Orange account directly by typing the URL into your browser</li>
+                <li>Forward the suspicious email to Orange's security team</li>
+                <li>Delete the phishing email from your inbox and spam folder</li>
+                <li>If you've clicked a link or provided information, change your passwords immediately</li>
+                <li>Enable two-factor authentication on your Orange account for extra security</li>
+                <li>Monitor your account activity regularly for any unauthorized changes</li>
+                <li>Report the phishing attempt to local authorities if financial fraud occurred</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="promo-banner">
+        <div class="promo-content">
+            <div class="promo-badge">EXCLUSIVE PRIZE DRAW</div>
+            <h3>🎁 Win the Latest iPhone 17 Pro!</h3>
+            <p class="promo-highlight">Enter now for your chance to win Apple's newest flagship smartphone</p>
+            <div class="promo-features">
+                <div class="feature">✓ Brand New iPhone 17 Pro 256GB</div>
+                <div class="feature">✓ Free Orange Premium Plan (12 months)</div>
+                <div class="feature">✓ Exclusive Accessories Package</div>
+                <div class="feature">✓ Free Home Delivery & Setup</div>
+            </div>
+            <div class="promo-price">
+                <span class="new-price">Prize Value: €1,499</span>
+            </div>
+            <p class="promo-urgency">⏰ Draw closes in 48 hours! Over 10,000 entries received</p>
+            <a href="#" class="promo-button">Enter Prize Draw Now</a>
+            <p class="promo-terms">*No purchase necessary. Terms and conditions apply. Open to Orange customers only.</p>
+        </div>
+    </section>
+
+    <section class="cta-box">
+        <div class="cta-content">
+            <h3>Need Help or Have Questions?</h3>
+            <p>Our security team is here to assist you. If you're unsure about the legitimacy of a communication, contact us through official channels.</p>
+            <a href="#" class="cta-button">Contact Security Support</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="section">
+            <div class="section-label">Additional Resources</div>
+            <h2 class="section-title">Stay Informed and Protected</h2>
+            <p class="intro-text">
+                Cybercriminals constantly evolve their tactics, so staying informed is your best defense. Orange is committed to protecting your data and privacy. We regularly update our security measures and encourage all customers to practice safe online habits.
+            </p>
+            <p class="intro-text">
+                Remember: When in doubt, always contact Orange directly through official channels listed on our website rather than responding to suspicious communications.
+            </p>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Our offers</h3>
+                <ul>
+                    <li><a href="#">Mobile + Internet + TV</a></li>
+                    <li><a href="#">Mobile</a></li>
+                    <li><a href="#">Internet</a></li>
+                    <li><a href="#">TV</a></li>
+                    <li><a href="#">Smartphones and GSM</a></li>
+                    <li><a href="#">Ultra Gaming</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Our services</h3>
+                <ul>
+                    <li><a href="#">Orange Money</a></li>
+                    <li><a href="#">Orange Applications</a></li>
+                    <li><a href="#">Orange Thank You</a></li>
+                    <li><a href="#">Smartphone trade-in</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Help and support</h3>
+                <ul>
+                    <li><a href="#">Consult FAQ's</a></li>
+                    <li><a href="#">Configure my smartphone</a></li>
+                    <li><a href="#">Configure my internet</a></li>
+                    <li><a href="#">Security Tips</a></li>
+                    <li><a href="#">Report Phishing</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">Contact information</a></li>
+                    <li><a href="#">Call 5000</a></li>
+                    <li><a href="#">Our Orange shops</a></li>
+                    <li><a href="#">Security Hotline</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© Orange 2025 | Your security is our priority</p>
+        </div>
+    </footer>
+</body>
+</html>

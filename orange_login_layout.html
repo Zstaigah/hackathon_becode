@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orange - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .top-nav {
+            background-color: white;
+            padding: 10px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .top-nav-left a, .top-nav-right a {
+            color: #000;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .top-nav-right a {
+            font-weight: 600;
+        }
+
+        .main-header {
+            background-color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            background-color: #ff7900;
+            color: white;
+            padding: 8px 15px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-bar {
+            flex: 0 1 400px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .cart-icon, .user-space {
+            cursor: pointer;
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .login-form {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .login-form h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #ff7900;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        .login-btn:hover {
+            background-color: #e66e00;
+        }
+
+        .forgot-link {
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .forgot-link a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 25px 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .itsme-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #ff4500;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .itsme-btn:hover {
+            background-color: #e03e00;
+        }
+
+        .info-link {
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .info-link a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .new-client {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+        }
+
+        .new-client a {
+            color: #000;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #4a4a6a 50%, #c9a0dc 100%);
+            border-radius: 8px;
+            padding: 60px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .hero-section h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .hero-section p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            max-width: 500px;
+        }
+
+        .hero-section a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer {
+            background-color: #f9f9f9;
+            padding: 50px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-section ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .newsletter {
+            margin-bottom: 20px;
+        }
+
+        .newsletter p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .newsletter a {
+            color: #ff7900;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            font-size: 12px;
+            color: #666;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-bottom-links a {
+            color: #666;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        @media (max-width: 968px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-nav">
+        <div class="top-nav-left">
+            <a href="#">Individuals</a>
+            <a href="#">Self-employed</a>
+            <a href="#">Businesses</a>
+            <a href="#">Orange Company</a>
+        </div>
+        <div class="top-nav-right">
+            <a href="#">Top Up</a>
+            <a href="#">Shops</a>
+            <a href="#">Forum</a>
+            <a href="#">EN</a>
+            <a href="#">FR</a>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="logo-menu">
+            <div class="logo">orange</div>
+            <button class="menu-btn">☰ Menu</button>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="header-right">
+            <div class="cart-icon">🛒</div>
+            <div class="user-space">👤 Client Area</div>
+        </div>
+    </header>
+
+    <div class="content-wrapper">
+        <div class="login-form">
+            <h2>Username</h2>
+            <form>
+                <div class="form-group">
+                    <input type="email" placeholder="Email address" required>
+                </div>
+
+                <h2>Password</h2>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" required>
+                </div>
+
+                <button type="submit" class="login-btn">Log in</button>
+
+                <div class="forgot-link">
+                    <a href="#">Forgot username or password?</a>
+                </div>
+
+                <div class="divider">or</div>
+
+                <button type="button" class="itsme-btn">
+                    🔐 Sign in with itsme
+                </button>
+
+                <div class="info-link">
+                    <a href="#">More info about itsme</a>
+                </div>
+            </form>
+
+            <div class="new-client">
+                New client? <a href="#">Activate your account</a>
+            </div>
+        </div>
+
+        <div class="hero-section">
+            <h2>Lead the Future</h2>
+            <p>Orange Belgium's multi-year industrial project that creates value for its clients, its employees and society.</p>
+            <a href="#">Discover our strategy →</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Our offers</h3>
+                <ul>
+                    <li><a href="#">Mobile + Internet + TV</a></li>
+                    <li><a href="#">Mobile</a></li>
+                    <li><a href="#">Internet</a></li>
+                    <li><a href="#">TV</a></li>
+                    <li><a href="#">Smartphones & GSM</a></li>
+                    <li><a href="#">Ultra Gaming</a></li>
+                    <li><a href="#">Smart Home</a></li>
+                    <li><a href="#">hey! telecom</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Our services</h3>
+                <ul>
+                    <li><a href="#">Orange Network</a></li>
+                    <li><a href="#">Orange Applications</a></li>
+                    <li><a href="#">Orange Thank You</a></li>
+                    <li><a href="#">Smartphone repair</a></li>
+                    <li><a href="#">Social Rate</a></li>
+                </ul>
+                <h3 style="margin-top: 30px;">Manage my products</h3>
+                <ul>
+                    <li><a href="#">Top up my card</a></li>
+                    <li><a href="#">Access my account</a></li>
+                    <li><a href="#">Manage my consumption</a></li>
+                    <li><a href="#">Manage my invoices</a></li>
+                    <li><a href="#">Cancel my subscription</a></li>
+                    <li><a href="#">Move</a></li>
+                    <li><a href="#">My Orange app</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Orange company</h3>
+                <ul>
+                    <li><a href="#">About Orange</a></li>
+                    <li><a href="#">Corporate responsibility</a></li>
+                    <li><a href="#">Financial information</a></li>
+                    <li><a href="#">Press releases</a></li>
+                    <li><a href="#">Job offers</a></li>
+                </ul>
+                <h3 style="margin-top: 30px;">Contact</h3>
+                <ul>
+                    <li><a href="#">Contact information</a></li>
+                    <li><a href="#">Call 5000</a></li>
+                    <li><a href="#">Our Orange stores</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Orange in your mailbox</h3>
+                <div class="newsletter">
+                    <p>Stay informed about Orange news and the world of telecommunications.</p>
+                    <a href="#">→ Subscribe to the newsletter</a>
+                </div>
+                <h3>Follow us</h3>
+                <div class="social-links">
+                    <a href="#">📷</a>
+                    <a href="#">in</a>
+                    <a href="#">▶</a>
+                </div>
+                <h3 style="margin-top: 30px;">Help & Support</h3>
+                <ul>
+                    <li><a href="#">Check FAQs</a></li>
+                    <li><a href="#">Configure my smartphone</a></li>
+                    <li><a href="#">Configure my internet</a></li>
+                    <li><a href="#">Configure my Voicemail</a></li>
+                    <li><a href="#">Identify your prepaid card</a></li>
+                    <li><a href="#">Find my PIN/PUK code</a></li>
+                    <li><a href="#">Old rate plans</a></li>
+                    <li><a href="#">Forum Tribe</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div>© Orange 2025</div>
+            <div class="footer-bottom-links">
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Privacy</a>
+                <a href="#">Financial Information</a>
+                <a href="#">Company Data</a>
+                <a href="#">Consumer Information - Quality of Service</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

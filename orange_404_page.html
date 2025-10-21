@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Orange</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            color: #000;
+            background: #fff;
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-bar {
+            background: #f6f6f6;
+            padding: 8px 20px;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+        .top-bar-left a, .top-bar-right a {
+            margin: 0 12px;
+            color: #000;
+            text-decoration: none;
+            font-weight: 400;
+        }
+
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .lang-active {
+            font-weight: 700;
+        }
+
+        .header {
+            background: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+        .logo-menu {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: #ff7900;
+            border-radius: 0;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+
+        .menu-icon {
+            width: 20px;
+            height: 2px;
+            background: #000;
+            position: relative;
+            display: block;
+        }
+
+        .menu-icon::before,
+        .menu-icon::after {
+            content: '';
+            width: 20px;
+            height: 2px;
+            background: #000;
+            position: absolute;
+            left: 0;
+        }
+
+        .menu-icon::before { top: -6px; }
+        .menu-icon::after { top: 6px; }
+
+        .search-box {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 40px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 40px 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .client-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .error-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            background: #f6f6f6;
+        }
+
+        .error-content {
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .error-code {
+            font-size: 120px;
+            font-weight: 700;
+            color: #ff7900;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .error-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .error-message {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+
+        .error-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #ff7900;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #e56d00;
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #fff;
+            color: #000;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            border: 2px solid #000;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        .helpful-links {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid #ddd;
+        }
+
+        .helpful-links h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            text-align: left;
+        }
+
+        .link-item {
+            padding: 15px;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .link-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .link-item a {
+            color: #000;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .link-item a::before {
+            content: "→";
+            color: #ff7900;
+            font-weight: bold;
+        }
+
+        .link-item a:hover {
+            color: #ff7900;
+        }
+
+        .footer {
+            background: #f6f6f6;
+            padding: 60px 40px 30px;
+            border-top: 1px solid #e6e6e6;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+            color: #000;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: #ff7900;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 50px auto 0;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+            font-size: 13px;
+            color: #666;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 80px;
+            }
+
+            .error-title {
+                font-size: 28px;
+            }
+
+            .error-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .search-box {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <a href="#">Particulars</a>
+            <a href="#">Independents</a>
+            <a href="#">Enterprises</a>
+            <a href="#">Orange Society</a>
+        </div>
+        <div class="top-bar-right">
+            <a href="#">Recharge</a>
+            <a href="#">Shops</a>
+            <a href="#">Forum Tribe</a>
+            <a href="#">FR</a>
+            <a href="#" class="lang-active">NL</a>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="logo-menu">
+            <span class="logo"></span>
+            <button class="menu-btn">
+                <span class="menu-icon"></span>
+                Menu
+            </button>
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Search...">
+            <button>🔍</button>
+        </div>
+        <div class="client-area">
+            <span>🌐</span>
+            <span>👤</span>
+            <span>Client area</span>
+        </div>
+    </header>
+
+    <div class="error-container">
+        <div class="error-content">
+            <div class="error-code">404</div>
+            <h1 class="error-title">Page Not Found</h1>
+            <p class="error-message">
+                Oops! The page you're looking for doesn't exist. It might have been moved, deleted, or the URL might be incorrect. Don't worry, we'll help you find what you need.
+            </p>
+
+            <div class="error-actions">
+                <a href="#" class="btn-primary">Go to Homepage</a>
+                <a href="#" class="btn-secondary">Contact Support</a>
+            </div>
+
+            <div class="helpful-links">
+                <h3>Popular Pages</h3>
+                <div class="links-grid">
+                    <div class="link-item">
+                        <a href="#">My Orange Account</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="#">Mobile Offers</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="#">Internet & TV</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="#">Help & Support</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="#">Shop Smartphones</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="#">Find a Store</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Our offers</h3>
+                <ul>
+                    <li><a href="#">Mobile + Internet + TV</a></li>
+                    <li><a href="#">Mobile</a></li>
+                    <li><a href="#">Internet</a></li>
+                    <li><a href="#">TV</a></li>
+                    <li><a href="#">Smartphones and GSM</a></li>
+                    <li><a href="#">Ultra Gaming</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Our services</h3>
+                <ul>
+                    <li><a href="#">Orange Money</a></li>
+                    <li><a href="#">Orange Applications</a></li>
+                    <li><a href="#">Orange Thank You</a></li>
+                    <li><a href="#">Smartphone trade-in</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Help and support</h3>
+                <ul>
+                    <li><a href="#">Consult FAQ's</a></li>
+                    <li><a href="#">Configure my smartphone</a></li>
+                    <li><a href="#">Configure my internet</a></li>
+                    <li><a href="#">Security Tips</a></li>
+                    <li><a href="#">Report Phishing</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">Contact information</a></li>
+                    <li><a href="#">Call 5000</a></li>
+                    <li><a href="#">Our Orange shops</a></li>
+                    <li><a href="#">Security Hotline</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© Orange 2025</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You've Won! - Orange</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            background: #ff7900;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: white;
+            margin: 0 auto 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff7900;
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: white;
+            font-size: 16px;
+            opacity: 0.95;
+        }
+
+        .banner {
+            background: linear-gradient(135deg, #ffd54f 0%, #ffb300 100%);
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner::before {
+            content: '🎉';
+            position: absolute;
+            font-size: 100px;
+            opacity: 0.1;
+            left: -20px;
+            top: -20px;
+        }
+
+        .banner::after {
+            content: '🎁';
+            position: absolute;
+            font-size: 100px;
+            opacity: 0.1;
+            right: -20px;
+            bottom: -20px;
+        }
+
+        .prize-badge {
+            background: white;
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .prize-badge h2 {
+            color: #ff7900;
+            font-size: 36px;
+            margin: 0;
+        }
+
+        .prize-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin: 15px 0;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .greeting {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .greeting strong {
+            color: #ff7900;
+        }
+
+        .main-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .prize-details {
+            background: #fff8e1;
+            border-left: 4px solid #ff7900;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+
+        .prize-details h3 {
+            color: #ff7900;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .prize-item {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .prize-icon {
+            font-size: 40px;
+            margin-right: 20px;
+        }
+
+        .prize-info h4 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .prize-info p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .urgency-box {
+            background: #ffebee;
+            border: 2px solid #ff5252;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .urgency-box .timer {
+            font-size: 14px;
+            color: #d32f2f;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .urgency-box p {
+            color: #d32f2f;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .countdown-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            min-width: 70px;
+        }
+
+        .countdown-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ff7900;
+            display: block;
+        }
+
+        .countdown-label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .cta-button {
+            display: block;
+            background: linear-gradient(135deg, #ff7900 0%, #e56d00 100%);
+            color: white;
+            text-align: center;
+            padding: 20px 40px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 50px;
+            margin: 30px 0;
+            box-shadow: 0 6px 20px rgba(255, 121, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        .steps {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .steps h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin: 15px 0;
+        }
+
+        .step-number {
+            background: #ff7900;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .step-text {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .benefits {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .benefit-item::before {
+            content: '✓';
+            background: #4caf50;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .reference-number {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .reference-number p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .reference-code {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1976d2;
+            letter-spacing: 2px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .social-proof {
+            background: #f1f8e9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .social-proof p {
+            font-size: 14px;
+            color: #558b2f;
+            font-style: italic;
+        }
+
+        .footer {
+            background: #333;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 13px;
+        }
+
+        .footer p {
+            font-size: 12px;
+            color: #aaa;
+            margin: 10px 0;
+        }
+
+        .disclaimer {
+            font-size: 11px;
+            color: #999;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+            .benefits {
+                grid-template-columns: 1fr;
+            }
+            
+            .countdown {
+                flex-wrap: wrap;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .prize-badge h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">O</div>
+            <h1>Congratulations! 🎊</h1>
+            <p>You're a Winner at Orange</p>
+        </div>
+
+        <!-- Prize Banner -->
+        <div class="banner">
+            <div class="prize-badge">
+                <h2>€500</h2>
+            </div>
+            <div class="prize-text">Shopping Voucher</div>
+            <p style="color: #666; font-size: 14px;">+ Exclusive Premium Benefits</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <p class="greeting">
+                Dear <strong>Valued Customer</strong>,
+            </p>
+
+            <p class="main-text">
+                We're thrilled to inform you that you've been selected as one of our lucky winners in the <strong>Orange Customer Appreciation Program</strong>! As a loyal Orange customer, you've earned an exclusive reward that's waiting for you.
+            </p>
+
+            <!-- Prize Details -->
+            <div class="prize-details">
+                <h3>🎁 Your Prize Package Includes:</h3>
+                
+                <div class="prize-item">
+                    <div class="prize-icon">💳</div>
+                    <div class="prize-info">
+                        <h4>€500 Shopping Voucher</h4>
+                        <p>Use it anywhere - online or in-store at thousands of retailers</p>
+                    </div>
+                </div>
+
+                <div class="prize-item">
+                    <div class="prize-icon">📱</div>
+                    <div class="prize-info">
+                        <h4>Premium Data Upgrade</h4>
+                        <p>3 months of unlimited 5G data at no extra cost</p>
+                    </div>
+                </div>
+
+                <div class="prize-item">
+                    <div class="prize-icon">🎯</div>
+                    <div class="prize-info">
+                        <h4>VIP Customer Status</h4>
+                        <p>Priority support and exclusive early access to new offers</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Urgency Box -->
+            <div class="urgency-box">
+                <div class="timer">⏰ LIMITED TIME OFFER</div>
+                <p>Claim your prize within the next 48 hours!</p>
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <span class="countdown-number">01</span>
+                        <span class="countdown-label">Days</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number">23</span>
+                        <span class="countdown-label">Hours</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number">45</span>
+                        <span class="countdown-label">Minutes</span>
+                    </div>
+                </div>
+                <p style="font-size: 13px; margin-top: 10px;">After this period, your prize will be offered to another customer</p>
+            </div>
+
+            <!-- CTA Button -->
+            <a href="#" class="cta-button">
+                🎉 CLAIM MY PRIZE NOW →
+            </a>
+
+            <!-- Reference Number -->
+            <div class="reference-number">
+                <p>Your Unique Prize Reference Number:</p>
+                <div class="reference-code">ORG-2025-X7B9K2</div>
+                <p style="font-size: 12px; margin-top: 10px;">Keep this number safe for verification</p>
+            </div>
+
+            <!-- Steps -->
+            <div class="steps">
+                <h3>How to Claim Your Prize (Takes Only 2 Minutes):</h3>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-text">Click the "Claim My Prize Now" button above</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-text">Enter your reference number and verify your Orange account details</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-text">Choose your preferred voucher delivery method (email or SMS)</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-text">Receive your €500 voucher and premium benefits instantly!</div>
+                </div>
+            </div>
+
+            <!-- Benefits Grid -->
+            <div class="benefits">
+                <div class="benefit-item">100% Free - No Hidden Costs</div>
+                <div class="benefit-item">Instant Digital Delivery</div>
+                <div class="benefit-item">No Purchase Required</div>
+                <div class="benefit-item">Valid for 12 Months</div>
+                <div class="benefit-item">Transferable to Family</div>
+                <div class="benefit-item">Use Multiple Times</div>
+            </div>
+
+            <!-- Social Proof -->
+            <div class="social-proof">
+                <p>"Over 15,000 Orange customers have already claimed their prizes this month. Join them today!"</p>
+            </div>
+
+            <!-- Second CTA -->
+            <a href="#" class="cta-button">
+                ✨ YES, I WANT MY €500 VOUCHER! ✨
+            </a>
+
+            <p style="font-size: 14px; color: #666; text-align: center; margin-top: 30px;">
+                This is an exclusive reward for being a valued Orange customer. We appreciate your loyalty and want to give back to you!
+            </p>
+
+            <p style="font-size: 13px; color: #999; text-align: center; margin-top: 15px;">
+                Questions? Contact our Winner Support Team at <strong style="color: #ff7900;">winners@orange.com</strong> or call <strong style="color: #ff7900;">0800-PRIZE-NOW</strong>
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p style="font-size: 16px; color: white; margin-bottom: 15px;">
+                🎊 Congratulations once again from everyone at Orange! 🎊
+            </p>
+            
+            <div class="footer-links">
+                <a href="#">About This Prize</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Contact Support</a>
+                <a href="#">Unsubscribe</a>
+            </div>
+
+            <p>© 2025 Orange Belgium. All rights reserved.</p>
+            
+            <div class="disclaimer">
+                This email was sent to you as a valued Orange customer. Prize winners are selected based on account activity and loyalty. 
+                To claim your prize, you must be an active Orange customer with an account in good standing. 
+                Offer expires in 48 hours from receipt of this email. No purchase necessary. See website for full terms and conditions.
+                <br><br>
+                Orange Belgium SA | Rue du Progrès 40, 1210 Brussels, Belgium
+            </div>
+        </div>
+    </div>
+</body>
+</html>
