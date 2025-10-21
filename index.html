@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Friday 2025 Offers - Orange</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            color: #000;
+            background: #f5f5f5;
+        }
+
+        .header {
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .top-nav {
+            padding: 10px 20px;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .top-nav-left a, .top-nav-right a {
+            margin: 0 10px;
+            color: #000;
+            text-decoration: none;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            justify-content: space-between;
+        }
+
+        .logo {
+            width: 30px;
+            height: 30px;
+            background: #ff7900;
+            display: inline-block;
+        }
+
+        .menu-btn {
+            margin-left: 15px;
+            background: none;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .search-box {
+            flex: 1;
+            max-width: 400px;
+            margin: 0 20px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 8px 35px 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hero {
+            background: #000;
+            color: white;
+            padding: 60px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 500px;
+            z-index: 2;
+        }
+
+        .hero-label {
+            color: #ff7900;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .hero-banner {
+            position: absolute;
+            right: -100px;
+            top: -50px;
+            bottom: -50px;
+        }
+
+        .banner-stripe {
+            background: #ff7900;
+            color: white;
+            padding: 20px 200px;
+            font-size: 36px;
+            font-weight: bold;
+            transform: rotate(35deg);
+            margin: 20px 0;
+            white-space: nowrap;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-label {
+            color: #ff7900;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .signup-section {
+            display: flex;
+            gap: 60px;
+            align-items: flex-start;
+            margin-bottom: 80px;
+        }
+
+        .signup-content {
+            flex: 1;
+        }
+
+        .signup-form {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: #ff7900;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #e56d00;
+        }
+
+        .phones-section {
+            margin-bottom: 80px;
+        }
+
+        .phones-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .phone-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+        }
+
+        .phone-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #00c853;
+            color: white;
+            padding: 4px 8px;
+            font-size: 11px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .new-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #007aff;
+            color: white;
+            padding: 4px 8px;
+            font-size: 11px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .phone-brand {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .phone-model {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .phone-image {
+            width: 120px;
+            height: 240px;
+            margin: 20px auto;
+            background: #f0f0f0;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .phone-price {
+            margin: 20px 0;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 14px;
+        }
+
+        .new-price {
+            font-size: 28px;
+            color: #ff7900;
+            font-weight: 700;
+        }
+
+        .phone-plan {
+            font-size: 12px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .view-all-btn {
+            display: block;
+            margin: 40px auto;
+            padding: 12px 40px;
+            background: #ff7900;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .history-section, .offers-section {
+            margin-bottom: 60px;
+        }
+
+        .footer {
+            background: white;
+            padding: 60px 20px 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #000;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="top-nav">
+            <div class="top-nav-left">
+                <a href="#">Individuals</a>
+                <a href="#">Self-employed</a>
+                <a href="#">Business</a>
+                <a href="#">Orange Society</a>
+            </div>
+            <div class="top-nav-right">
+                <a href="#">Top Up</a>
+                <a href="#">Shops</a>
+                <a href="#">Forum Tribe</a>
+                <a href="#">FR</a>
+                <a href="#">NL</a>
+            </div>
+        </div>
+        <div class="main-nav">
+            <div style="display: flex; align-items: center;">
+                <span class="logo"></span>
+                <button class="menu-btn">☰ Menu</button>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Search...">
+                <button>🔍</button>
+            </div>
+            <div>
+                <span>🛒 Client area</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-label">Promotions</div>
+            <h1>Black Friday 2025 deals coming soon!</h1>
+            <p>Mark your calendars for November 28, 2025 to discover our promotions and exclusive Black Friday deals to be among the first to take advantage.</p>
+        </div>
+        <div class="hero-banner">
+            <div class="banner-stripe">Black Friday</div>
+            <div class="banner-stripe">Black Friday</div>
+            <div class="banner-stripe">Black Friday</div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="signup-section">
+            <div class="signup-content">
+                <div class="section-label">Sign up now!</div>
+                <h2 class="section-title">Don't want to miss our Black Friday deals?</h2>
+                <p>We'll be back in November 2025. Sign up now to be informed as soon as the world is able to take advantage of unbeatable offers!</p>
+                <p style="margin-top: 15px;">This Black Friday cake is not a one day event at Orange, you can benefit from promotions online and in our stores!</p>
+            </div>
+            <form class="signup-form">
+                <div class="form-group">
+                    <label>First name *</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Name *</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Email address *</label>
+                    <input type="email" required>
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </section>
+
+        <section class="phones-section">
+            <div class="section-label">Smartphone and GSM Selection</div>
+            <h2 class="section-title">Incredible discounts on smartphones</h2>
+            <p>Best deal, promotions, cadeaus, all our Orange tips with promotions on smartphones on the go.</p>
+            <p>Discover the 4 present all our hors plans at each for your next GSM.</p>
+
+            <div class="phones-grid">
+                <div class="phone-card">
+                    <span class="phone-badge">In stock</span>
+                    <span class="new-badge">New!</span>
+                    <div class="phone-brand">Xiaomi</div>
+                    <div class="phone-model">13T Pro</div>
+                    <div class="phone-image">📱</div>
+                    <div class="phone-price">
+                        <div class="old-price">690.65 €</div>
+                        <div class="new-price">5 €</div>
+                        <div class="phone-plan">+ Orange Flex 1 GB<br>+ Orange Mobile Medium</div>
+                    </div>
+                </div>
+
+                <div class="phone-card">
+                    <span class="phone-badge">In stock</span>
+                    <div class="phone-brand">HONOR</div>
+                    <div class="phone-model">Magic6 Lite</div>
+                    <div class="phone-image">📱</div>
+                    <div class="phone-price">
+                        <div class="old-price">690.65 €</div>
+                        <div class="new-price">5 €</div>
+                        <div class="phone-plan">+ Orange Flex 1 GB<br>+ Orange Mobile Medium</div>
+                    </div>
+                </div>
+
+                <div class="phone-card">
+                    <span class="phone-badge">In stock</span>
+                    <div class="phone-brand">Samsung</div>
+                    <div class="phone-model">Galaxy S25 FE</div>
+                    <div class="phone-image">📱</div>
+                    <div class="phone-price">
+                        <div class="old-price">249.66 €</div>
+                        <div class="new-price">5 €</div>
+                        <div class="phone-plan">+ Orange Flex 1 GB<br>+ Orange Mobile Medium</div>
+                    </div>
+                </div>
+
+                <div class="phone-card">
+                    <span class="phone-badge">In stock</span>
+                    <span class="new-badge">New!</span>
+                    <div class="phone-brand">Apple</div>
+                    <div class="phone-model">iPhone 17</div>
+                    <div class="phone-image">📱</div>
+                    <div class="phone-price">
+                        <div class="old-price">590.65 €</div>
+                        <div class="new-price">99 €</div>
+                        <div class="phone-plan">+ Orange Flex 5 GB<br>+ Orange Mobile Medium</div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="view-all-btn">Discover all our smartphones</button>
+        </section>
+
+        <section class="history-section">
+            <div class="section-label">History</div>
+            <h2 class="section-title">Black Friday origins</h2>
+            <p>The phenomenon was born from a shopping frenzy that is almost unique: Black Friday, the day after Thanksgiving, by the suppliers of good deals. Americans began dropping prices for the day to clear gifts in anticipation of pre-Christmas shopping.</p>
+        </section>
+
+        <section class="offers-section">
+            <div class="section-label">Our offers</div>
+            <h2 class="section-title">Black Friday At Orange</h2>
+            <p>Black Friday is taking more and more place as an employer in Belgium and you will be more and more numerous to benefit from discounts in shops on all our new GSMs and accessories.</p>
+            <p style="margin-top: 15px;">If you want to avoid the rush, we will give you an appointment on Friday, November 28, 2025.</p>
+            <p style="margin-top: 15px;">Compare all the good offers online and gain time by having the files and cables.</p>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Our offers</h3>
+                <ul>
+                    <li><a href="#">Mobile + Internet + TV</a></li>
+                    <li><a href="#">Mobile</a></li>
+                    <li><a href="#">Internet</a></li>
+                    <li><a href="#">TV</a></li>
+                    <li><a href="#">Smartphones and GSM</a></li>
+                    <li><a href="#">Ultra Gaming</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">hey! telecom</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Our services</h3>
+                <ul>
+                    <li><a href="#">Orange Money</a></li>
+                    <li><a href="#">Orange Applications</a></li>
+                    <li><a href="#">Orange Thank You</a></li>
+                    <li><a href="#">Smartphone trade-in</a></li>
+                    <li><a href="#">Social tariff</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Orange Society</h3>
+                <ul>
+                    <li><a href="#">About Orange</a></li>
+                    <li><a href="#">Corporate responsibility</a></li>
+                    <li><a href="#">Financial information</a></li>
+                    <li><a href="#">Press releases</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Help and support</h3>
+                <ul>
+                    <li><a href="#">Consult FAQs</a></li>
+                    <li><a href="#">Configure my smartphone</a></li>
+                    <li><a href="#">Configure my internet</a></li>
+                    <li><a href="#">Configure my Voicemail</a></li>
+                    <li><a href="#">Identify my prepaid card</a></li>
+                    <li><a href="#">Check my mobile for 5G/4G</a></li>
+                    <li><a href="#">Incidents and outages</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Manage my products</h3>
+                <ul>
+                    <li><a href="#">Top up my card</a></li>
+                    <li><a href="#">Access my account</a></li>
+                    <li><a href="#">Manage my consumption</a></li>
+                    <li><a href="#">Manage my invoices</a></li>
+                    <li><a href="#">Restore my voicemail</a></li>
+                    <li><a href="#">Move</a></li>
+                    <li><a href="#">My Orange app</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">Contact information</a></li>
+                    <li><a href="#">Call 5000</a></li>
+                    <li><a href="#">Our Orange shops</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© Orange 2025</p>
+        </div>
+    </footer>
+</body>
+</html>
